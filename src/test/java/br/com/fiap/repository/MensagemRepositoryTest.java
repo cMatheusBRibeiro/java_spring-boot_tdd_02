@@ -1,5 +1,6 @@
 package br.com.fiap.repository;
 
+import br.com.fiap.helper.MensagemHelper;
 import br.com.fiap.model.Mensagem;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +35,7 @@ public class MensagemRepositoryTest {
     @Test
     void devePermitirCriarMensagem () {
         // Arrange
-        Mensagem mensagem = gerarMensagem();
+        Mensagem mensagem = MensagemHelper.gerarMensagem();
         when(mensagemRepository.save(any(Mensagem.class))).thenReturn(mensagem);
 
         // Act
@@ -47,7 +48,7 @@ public class MensagemRepositoryTest {
     @Test
     void devePermitirConsultarMensagem () {
         var id = UUID.randomUUID();
-        Mensagem mensagem = gerarMensagem();
+        Mensagem mensagem = MensagemHelper.gerarMensagem();
         mensagem.setId(id);
         when(mensagemRepository.findById(any(UUID.class))).thenReturn(Optional.of(mensagem));
 
@@ -61,21 +62,11 @@ public class MensagemRepositoryTest {
     @Test
     void devePermitirApagarMensagem () {
         var id = UUID.randomUUID();
-        Mensagem mensagem = gerarMensagem();
-        mensagem.setId(id);
         doNothing().when(mensagemRepository).deleteById(any(UUID.class));
 
         mensagemRepository.deleteById(id);
 
         verify(mensagemRepository, times(1)).deleteById(id);
-    }
-
-    private Mensagem gerarMensagem() {
-        return Mensagem
-                .builder()
-                .usuario("Usuário")
-                .conteudo("Conteúdo")
-                .build();
     }
 
 }
