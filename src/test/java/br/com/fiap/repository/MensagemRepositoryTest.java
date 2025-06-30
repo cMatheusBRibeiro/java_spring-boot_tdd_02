@@ -39,7 +39,7 @@ public class MensagemRepositoryTest {
         when(mensagemRepository.save(any(Mensagem.class))).thenReturn(mensagem);
 
         // Act
-        var mensagemArmazenada = mensagemRepository.save(mensagem);
+        mensagemRepository.save(mensagem);
 
         // Assert
         verify(mensagemRepository, times(1)).save(mensagem);

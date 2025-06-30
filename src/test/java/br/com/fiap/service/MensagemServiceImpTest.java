@@ -49,7 +49,7 @@ public class MensagemServiceImpTest {
             when(mensagemRepository.save(any(Mensagem.class)))
                     .thenAnswer(i -> i.getArgument(0));
 
-            var mensagemRegistrada = mensagemService.registrarMensagem(mensagem);
+            mensagemService.registrarMensagem(mensagem);
 
             verify(mensagemRepository, times(1))
                     .save(any(Mensagem.class));
@@ -153,7 +153,7 @@ public class MensagemServiceImpTest {
             mensagem.setId(id);
             when(mensagemRepository.findAll()).thenReturn(List.of(mensagem));
 
-            var mensagensObtidas = mensagemService.obterMensagens();
+            mensagemService.obterMensagens();
 
             verify(mensagemRepository, times(1))
                     .findAll();
@@ -214,7 +214,7 @@ public class MensagemServiceImpTest {
         }
 
         @Test
-        public void deveEstourarExceptionAoRemoverMensagemQueNaoExiste() throws MensagemNotFoundException {
+        public void deveEstourarExceptionAoRemoverMensagemQueNaoExiste() {
             var id = UUID.randomUUID();
             doNothing().when(mensagemRepository).deleteById(any(UUID.class));
 
