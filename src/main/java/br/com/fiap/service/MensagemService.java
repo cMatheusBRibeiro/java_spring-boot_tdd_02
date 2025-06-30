@@ -8,10 +8,10 @@ import java.util.UUID;
 
 public interface MensagemService {
 
-    public Mensagem registrarMensagem(Mensagem mensagem);
-    public Mensagem obterMensagemPorId(UUID id) throws MensagemNotFoundException;
-    public List<Mensagem> obterMensagens();
-    public void removerMensagem(UUID id);
-    public Mensagem atualizarMensagem(Mensagem mensagem);
+    Mensagem registrarMensagem(Mensagem mensagem);
+    Mensagem obterMensagemPorId(UUID id) throws MensagemNotFoundException;
+    List<Mensagem> obterMensagens();
+    boolean  removerMensagem(UUID id) throws MensagemNotFoundException;
+    Mensagem atualizarMensagem(Mensagem mensagem);
 
 }

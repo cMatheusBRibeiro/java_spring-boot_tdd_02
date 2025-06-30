@@ -33,8 +33,12 @@ public class MensagemServiceImp implements MensagemService {
     }
 
     @Override
-    public void removerMensagem(UUID id) {
-        mensagemRepository.deleteById(id);
+    public boolean removerMensagem(UUID id) throws MensagemNotFoundException {
+        if (mensagemRepository.existsById(id)) {
+            mensagemRepository.deleteById(id);
+            return true;
+        }
+        throw new MensagemNotFoundException("Mensagem não encontrada");
     }
 
     @Override
