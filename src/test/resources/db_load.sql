@@ -1,0 +1,5 @@
+INSERT INTO mensagem (ID, USUARIO, CONTEUDO, DATA_CRIACAO, DATA_ATUALIZACAO, GOSTEI)
+VALUES
+    ('9415c37e-08a0-41f7-b81b-5d93181ffc13', 'José', 'Mensagem de José', '2025-07-10 00:00:00.10000', '2025-07-10 00:00:00.10000', 0),
+    ('e6aefd1f-55f7-46ad-b178-d77039b73997', 'Maria', 'Mensagem de Maria', '2025-07-10 00:00:00.10000', '2025-07-10 00:00:00.10000', 0),
+    ('4c1d1319-8a91-422c-9f8f-826d5c98fcdf', 'Carlota', 'Mensagem de Carlota', '2025-07-10 00:00:00.10000', '2025-07-10 00:00:00.10000', 0);
