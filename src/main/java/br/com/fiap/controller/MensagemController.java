@@ -54,4 +54,25 @@ public class MensagemController {
         return new ResponseEntity<>(mensagemRegistrada, HttpStatus.CREATED);
     }
 
+    @DeleteMapping(
+            value = "/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity removerMensagem(
+            @PathVariable
+            String id
+    ) {
+        try {
+            var uuid = UUID.fromString(id);
+
+            mensagemService.removerMensagem(uuid);
+
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (IllegalArgumentException ex) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (MensagemNotFoundException ex) {
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
