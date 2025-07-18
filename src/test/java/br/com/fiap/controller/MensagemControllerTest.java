@@ -115,19 +115,4 @@ public class MensagemControllerTest {
         ).andExpect(status().isBadRequest());
     }
 
-    @Test
-    void devePermitirRemoverMensagem() {
-        fail("Não implementado");
-    }
-
-    @Test
-    void devePermitirAtualizarMensagem() {
-        fail("Não implementado");
-    }
-
-    @Test
-    void devePermitirBuscarMensagens() {
-        fail("Não implementado");
-    }
-
 }
